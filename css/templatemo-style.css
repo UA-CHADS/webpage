@@ -11,7 +11,7 @@ body {
 	font-size: 24px;
 	font-weight: 300;
 	overflow-x: hidden;
-	
+	background-image: url(../img/letter_bg_01.jpg)
 }
 
 a {
@@ -88,6 +88,7 @@ p {
 }
 
 /* Animation */
+
 .cb-slideshow,
 .cb-slideshow:after {
     position: fixed;
@@ -118,7 +119,6 @@ p {
     animation: imageAnimation 72s linear infinite 0s;
 
 }
-
 
 .cb-slideshow li:nth-child(1) { 
     background-image: url(../img/letter_bg_01.jpg)
