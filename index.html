@@ -1,191 +1,531 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Cybersecurity, Hacking, and Digital Security Club</title>
+	<style>
+		:root {
+			--glass-bg: rgba(255, 255, 255, .06);
+			--glass-border: rgba(255, 255, 255, .14);
+			--accent: #009688;
+			/* teal accent for Join Us */
+			--text: #ffffff;
+			--muted: rgba(255, 255, 255, .8);
+			--radius: 18px;
+			--radius-sm: 12px;
+			--shadow: 0 4px 10px rgba(0, 0, 0, .25);
+		}
 
-	<title>Cyber, Hacking, and Digital Security</title>
-	<!-- 
+		body {
+			margin: 0;
+			background-color: #042C44;
+			color: var(--text);
+			font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+			font-size: 20px;
+			font-weight: 300;
+			overflow-x: hidden;
+			padding-top: 72px;
+		}
 
-Letter Template 
+		/* particles canvas sits behind everything */
+		#particles-js {
+			position: fixed;
+			inset: 0;
+			z-index: 0;
+			width: 100%;
+			height: 100%;
+		}
 
-https://templatemo.com/tm-510-letter
+		a {
+			color: #FFFFFF;
+			text-decoration: none;
+			transition: all .3s ease;
+		}
 
-Template Re-distribution is NOT allowed.
+		a:hover {
+			color: var(--accent);
+			text-decoration: underline;
+		}
 
--->
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
-	<!-- Google web font "Open Sans" -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-	<link rel="stylesheet" href="css/bootstrap.min.css">
+		h1 {
+			font-size: clamp(28px, 4vw, 42px);
+			margin: 8px 0 14px;
+		}
 
-	<link rel="stylesheet" href="css/demo.css" />
-	<link rel="stylesheet" href="css/templatemo-style.css">
+		.sub {
+			color: var(--muted);
+		}
 
-	<script type="text/javascript" src="js/modernizr.custom.86080.js"></script>
+		/* ===== Top Navigation (restyled) ===== */
+		.nav-wrap {
+			position: fixed;
+			/* pinned to viewport */
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 1001;
+			background: rgba(0, 0, 0, .55);
+			border-bottom: 1px solid var(--glass-border);
+			box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+		}
 
+		.nav {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 16px 20px;
+			display: flex;
+			align-items: center;
+			gap: 16px;
+		}
+
+		.brand img {
+			height: 40px;
+			width: 40px;
+			object-fit: contain;
+			border-radius: 8px;
+		}
+
+		.navlinks {
+			display: flex;
+			gap: 20px;
+			margin-left: 20px;
+			flex-wrap: wrap;
+		}
+
+		.navlinks a {
+			padding: 8px 12px;
+			border-radius: 8px;
+			font-weight: 600;
+			color: var(--text);
+		}
+
+		.navlinks a.active,
+		.navlinks a:hover {
+			background: rgba(255, 255, 255, .08);
+		}
+
+		.spacer {
+			flex: 1;
+		}
+
+		.cta {
+			background: var(--accent);
+			color: #fff;
+			padding: 10px 16px;
+			border-radius: 999px;
+			font-weight: 700;
+			box-shadow: var(--shadow);
+			border: none;
+		}
+
+		.hero {
+			position: relative;
+			z-index: 1;
+			/* above particles */
+			max-width: 1200px;
+			margin: 28px auto 0;
+			padding: 0 20px;
+			display: grid;
+			grid-template-columns: 1.1fr .9fr;
+			gap: 28px;
+		}
+
+		.hero-card {
+			background: var(--glass-bg);
+			border: 1px solid var(--glass-border);
+			border-radius: var(--radius);
+			padding-right: 28px;
+			padding-top: 20px;
+			padding-left: 28px;
+			box-shadow: var(--shadow);
+		}
+
+		.kicker {
+			color: #a8e1ff;
+			font-weight: 700;
+			font-size: .95rem;
+			letter-spacing: .2px;
+		}
+
+		.countdown {
+			margin-top: 18px;
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			gap: 10px;
+		}
+
+		.unit {
+			background: rgba(255, 255, 255, .09);
+			border: 1px solid var(--glass-border);
+			border-radius: var(--radius-sm);
+			padding: 14px;
+			text-align: center;
+		}
+
+		.unit b {
+			display: block;
+			font-size: clamp(22px, 3.6vw, 32px);
+			font-weight: 800;
+		}
+
+		.unit span {
+			color: var(--muted);
+			font-size: .85rem;
+			font-weight: 600;
+		}
+
+		.footnote {
+			color: var(--muted);
+			opacity: .95;
+			margin-top: 12px;
+			text-align: center;
+		}
+
+		.hero-img {
+			background: var(--glass-bg);
+			border: 1px solid var(--glass-border);
+			border-radius: var(--radius);
+			box-shadow: var(--shadow);
+			display: grid;
+			place-items: center;
+			overflow: hidden;
+		}
+
+		.hero-img img {
+			max-width: 90%;
+			max-height: 90%;
+			object-fit: contain;
+			margin-top: -40px;
+			margin-bottom: -40px;
+		}
+
+		.carousel-wrap {
+			position: relative;
+			z-index: 1;
+			/* above particles */
+			max-width: 1200px;
+			margin: 24px auto 80px;
+			padding: 0 20px;
+		}
+
+		.carousel {
+			background: var(--glass-bg);
+			border: 1px solid var(--glass-border);
+			border-radius: var(--radius);
+			box-shadow: var(--shadow);
+			overflow: hidden;
+			position: relative;
+		}
+
+		.carousel-track {
+			display: flex;
+			transition: transform .45s ease;
+		}
+
+		.slide {
+			min-width: 100%;
+			height: 420px;
+			display: grid;
+			place-items: center;
+			background: #0a0e17;
+			color: var(--muted);
+		}
+
+		.slide img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		.placeholder {
+			text-align: center;
+			padding: 24px;
+		}
+
+		.ctrl {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			padding: 10px 12px;
+			border-radius: 999px;
+			background: rgba(0, 0, 0, .6);
+			color: #fff;
+			font-weight: 800;
+			cursor: pointer;
+			user-select: none;
+		}
+
+		.prev {
+			left: 14px;
+		}
+
+		.next {
+			right: 14px;
+		}
+
+		.dots {
+			position: absolute;
+			bottom: 10px;
+			left: 0;
+			right: 0;
+			display: flex;
+			justify-content: center;
+			gap: 8px;
+		}
+
+		.dot {
+			width: 9px;
+			height: 9px;
+			border-radius: 999px;
+			background: rgba(255, 255, 255, .35);
+			border: 1px solid var(--glass-border);
+			cursor: pointer;
+		}
+
+		.dot.active {
+			background: var(--accent);
+		}
+
+		@media (max-width: 920px) {
+			.hero {
+				grid-template-columns: 1fr;
+			}
+
+			.hero-img {
+				order: -1;
+			}
+		}
+	</style>
 </head>
 
 <body>
-
 	<div id="particles-js"></div>
 
-	<ul class="cb-slideshow">
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-	</ul>
-
-	<div class="container-fluid">
-		<div class="row cb-slideshow-text-container ">
-			<div class="tm-content col-xl-8 col-sm-8 col-xs-8 mx-auto section">
-				<header>
-					<h1>C.H.A.D.S</h1>
-				</header>
-
-				<!-- Update preiodically with news, updates and announcements -->
-				<h3>News, Updates and Announcments</h3>
-				<hr>
-				<h2> Hack the Computer - Open the Box Event</h2>
-				<p> We're thrilled to announce our upcoming Second Annual Hack the Computer - Open the Box Event! </p>
-                <h2> Save the date for February 24th, 2024 </h2>
-                <p> The event will be held in-person at the University of Alberta North Campus. </p>
-                <p> Exact location and time are still TBD. </p>
-				<p> Worried about your experience level? Don't be! This is a beginner friendly event with open-internet access.
-                However, your experience will be dramatically improved with some prior <a href="https://primer.picoctf.com/">reading (click here!)</a></p>
-				<p> Join our Discord below to keep up to date. We can't wait to see you all there!  </p>
-				<hr>
-
-				<div class="tm-social-icons-container text-xs-center mx-auto section">
-					<a href="https://discord.gg/Ds6vqa69Km" target="blank" class="tm-social-link">
-						<i class="fa-brands fa-discord"></i></a>
-					<a href="https://instagram.com/chads_ualberta?" target="blank" class="tm-social-link">
-						<i class="fa-brands fa-instagram"></i></a>
-					<a href="mailto: chads@ualberta.ca" target="blank" class="tm-social-link">
-						<i class="fa-regular fa-envelope"></i></a>
-					<a href="#" target="blank" class="tm-social-link"><i class="fa-brands fa-facebook"></i></a>
-					<a href="#" target="blank" class="tm-social-link"><i class="fa-brands fa-linkedin"></i></a>
-				</div>
+	<header class="nav-wrap">
+		<nav class="nav">
+			<a class="brand" href="#home">
+				<img id="club-logo" src="img/chads_logo.png" alt="Club Logo" />
+			</a>
+			<div class="navlinks">
+				<a class="active" href="#home">Home</a>
+				<a href="/about.html">About Us</a>
+				<a href="/events.html">Club Events</a>
+				<a href="/contact.html">Contact Us</a>
 			</div>
-		</div>
+			<div class="spacer"></div>
+			<a id="join-link" class="cta" href="#join" target="_blank" rel="noopener">Join Us →</a>
+		</nav>
+	</header>
 
+	<main class="hero" id="home">
+		<section class="hero-card">
+			<h1>Cybersecurity, Hacking, and Digital Security Club</h1>
+			<p class="sub">Our mission is to build a supportive community that provides hands-on workshops, technical
+				discussions, industry-led sessions, and networking opportunities.</p>
 
-		<!-- SCHEDULE -->
-		<section id="schedule">
-			<div class="container">
-				<div class="section-title">
-					<br>
-					<h2>Upcoming Events</h1>
-					<hr>
-				</div>
-                
-                <!-- EVENT 2 -->
-				<div class="col-md-6 col-sm-6">
-					<small>February 24th, 2024</small>
-					<p>Location TBD</p>
-					<p>Hack the Computer - Open the Box II</p>
-					<br>
-				</div>
-
-				<!-- EVENT 1 -->
-				<div class="col-md-6 col-sm-6">
-					<small>September 29th, 2023</small>
-					<p>At 5:00 PM in CCIS L1-140</p>
-					<p>Annual General Assembly</p>
-					<br>
-				</div>
+			<div aria-live="polite" class="countdown" id="countdown">
+				<div class="unit"><b id="days">0</b><span>Days</span></div>
+				<div class="unit"><b id="hours">00</b><span>Hours</span></div>
+				<div class="unit"><b id="mins">00</b><span>Minutes</span></div>
+				<div class="unit"><b id="secs">00</b><span>Seconds</span></div>
 			</div>
+
+			<p class="footnote" id="next-event-label">HTCOTB 2026: <span id="next-event-text"></span></p>
 		</section>
 
-		<div class="footer-link">
-			<p>Copyright © 2023 UofA C.H.A.D.S - Design: TemplateMo</p>
+		<aside class="hero-img" aria-label="Mascot image">
+			<img id="hacker-img" src="img/shield.png" alt="Hacker character" />
+			<a href="/resources.html" class="resource-link">Hacking Resources</a>
+		</aside>
+	</main>
+
+	<section class="carousel-wrap">
+		<div class="carousel" id="carousel">
+			<div class="carousel-track" id="carousel-track"></div>
+			<button class="ctrl prev" id="prev" aria-label="Previous slide" type="button">‹</button>
+			<button class="ctrl next" id="next" aria-label="Next slide" type="button">›</button>
+			<div class="dots" id="dots"></div>
 		</div>
-        
-        		<!-- ABOUT -->
-		<section id="about">
-			<div class="container">
-				<div class="section-title">
-					<br>
-					<h2>About Us</h1>
-					<hr>
-				</div>
+		<p class="footnote">Copyright © 2025 UofA CHADS</p>
+	</section>
 
-				<!-- Discord -->
-				<div class="col-md-10 col-sm-6">
-					<small>1. Discord</small>
-					<p> 
-						To be a member of this club, all that is officially required is your email address. All official correspondence will be done through email. However, your club experience will dramatically improve if you join our Discord server. We'd recommend making an account if you don't have one already. Our server can be found <a href="https://discord.gg/V4V4t85KKk">here</a>. We also gave every club member in the server a club member role. With this role, you can access the private club-text channels. We've also noticed a few people included their Discord username in the registration form but did not join our club server. Please manually join our server if you did this because you expected to use Discord.
-					</p>
-					<br>
-				</div>
+	<script>
+		/* ===== Config ===== */
+		const JOIN_LINK = "https://example.com/join";
+		const NEXT_EVENT_ISO = "2026-02-15T13:00:00-04:00";
+		const NEXT_EVENT_LABEL = "February 15, 1:00 PM • Room TBD";
 
-				<!-- Executives -->
-				<div class="col-md-10 col-sm-6">
-					<small>2. Executives</small>
-					<p> 
-						The results of our recent election have finally been validated, and I am pleased to announce our new executive team.
+		// Option A (fallback): specific image file IDs
+		const DRIVE_PHOTO_IDS = ["1WHImjxYRJBRPNjlubGnM69agnNA9qNOZ"];
 
-						Chancellor: Kenny Moc
-						President: Paul Le
-						Treasurer: Jack MacArthur
+		// Option B: Drive folder + API key (auto lists images on page load)
+		const DRIVE_FOLDER_ID = "YOUR_FOLDER_ID_HERE"; // ← paste your folder ID
+		const GOOGLE_API_KEY = "YOUR_API_KEY_HERE";    // ← Drive API enabled
 
-						For the Executive Positions:
-						Bakare Abdulrahman, Tioluwani Akinloye, Victoria Burman, Ted Byun, Hiritikk Kumar, Kim Le, 
-						Lucy Liu, Armaan Mangat, Khushi Mittal, Shariq Naiyer, Shubham Saharan, Nasif Qadri
+		/* ===== Countdown ===== */
+		document.getElementById('join-link').href = JOIN_LINK;
+		document.getElementById('next-event-text').textContent = NEXT_EVENT_LABEL;
 
-					</p>
-					<br>
-				</div>
+		const eventDate = new Date(NEXT_EVENT_ISO);
+		const days = document.getElementById('days');
+		const hours = document.getElementById('hours');
+		const mins = document.getElementById('mins');
+		const secs = document.getElementById('secs');
 
-				<!-- Discord -->
-				<div class="col-md-10 col-sm-6">
-					<small>3. Volunteering</small>
-					<p> 
-						Currently on our to-do list that we could use some help with is: improving/managing the website, maintaing and handling social media accounts, and creating a logo (we don't really have the rights to operate under our current logo, but hacker-culture says to be anti-authoritarian and not respect intellectual property rights).
-					</p>
-					<br>
-				</div>
+		function updateCountdown() {
+			const now = new Date();
+			const diff = Math.max(0, eventDate - now);
+			const sec = Math.floor(diff / 1000) % 60;
+			const min = Math.floor(diff / (1000 * 60)) % 60;
+			const hr = Math.floor(diff / (1000 * 60 * 60)) % 24;
+			const day = Math.floor(diff / (1000 * 60 * 60 * 24));
+			days.textContent = day;
+			hours.textContent = String(hr).padStart(2, '0');
+			mins.textContent = String(min).padStart(2, '0');
+			secs.textContent = String(sec).padStart(2, '0');
+		}
+		updateCountdown();
+		setInterval(updateCountdown, 1000);
 
-				<!-- Discord -->
-				<div class="col-md-10 col-sm-6">
-					<small>4. Club Room</small>
-					<p> 
-						I am trying my best to get one.
-					</p>
-					<br>
-				</div>
+		/* ===== Carousel ===== */
+		const toDriveImg = (id) => `https://drive.google.com/uc?id=${id}`;
+		const track = document.getElementById('carousel-track');
+		const dots = document.getElementById('dots');
+		const btnPrev = document.getElementById('prev');
+		const btnNext = document.getElementById('next');
 
-				<!-- Discord -->
-				<div class="col-md-10 col-sm-6">
-					<small>5. Social Nights / Weekly Meetings</small>
-					<p> 
-						If there's enough interest and we can get a designated spot (I.e. club room) then we can definitely do this. Again, this club is as much mine as anyone else's. The organization is meant to bring CHADS-ists together. So if anyone wanted to take the reins on organizing something like this, feel free. Just please let me know so that we can make it "club official."
-					</p>
-					<br>
-				</div>
+		function buildSlides(ids) {
+			track.innerHTML = '';
+			dots.innerHTML = '';
+			if (ids.length === 0) {
+				const slide = document.createElement('div');
+				slide.className = 'slide';
+				slide.innerHTML = '<div class="placeholder">No photos found. Add images to the Drive folder or set DRIVE_PHOTO_IDS.</div>';
+				track.appendChild(slide);
+				return 1;
+			}
+			ids.forEach((id, i) => {
+				const slide = document.createElement('div');
+				slide.className = 'slide';
+				const img = document.createElement('img');
+				img.loading = 'lazy';
+				img.src = toDriveImg(id);
+				img.alt = `Event photo ${i + 1}`;
+				slide.appendChild(img);
+				track.appendChild(slide);
 
-				<!-- Chancellor's Thanks -->
-				<div class="col-md-10 col-sm-6">
-					<small>Chancellor's Thanks</small>
-					<p> 
-						Lastly, thank you all for being a part of the club. I am excited about everything to come.
+				const dot = document.createElement('button');
+				dot.className = 'dot' + (i === 0 ? ' active' : '');
+				dot.type = 'button';
+				dot.addEventListener('click', () => goTo(i));
+				dots.appendChild(dot);
+			});
+			return ids.length;
+		}
 
-						Yours sincerely,
-						Chancellor Kenny 
-					</p>
-					<br>
-				</div>
+		let index = 0;
+		let total = 0;
 
-			</div>
-		</section>
+		function goTo(i) {
+			if (total === 0) return;
+			index = (i + total) % total;
+			track.style.transform = `translateX(${-index * 100}%)`;
+			[...dots.children].forEach((d, di) => d.classList.toggle('active', di === index));
+		}
+		function next() { goTo(index + 1); }
+		function prev() { goTo(index - 1); }
+
+		btnNext.addEventListener('click', next);
+		btnPrev.addEventListener('click', prev);
+
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'ArrowRight') next();
+			if (e.key === 'ArrowLeft') prev();
+		});
+		let startX = null;
+		track.addEventListener('touchstart', e => startX = e.touches[0].clientX, { passive: true });
+		track.addEventListener('touchend', e => {
+			if (startX === null) return;
+			const dx = e.changedTouches[0].clientX - startX;
+			if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); }
+			startX = null;
+		}, { passive: true });
+
+		/* ===== Drive folder listing (optional, needs API key) ===== */
+		async function listDriveImagesFromFolder(folderId, apiKey) {
+			const q = encodeURIComponent(`'${folderId}' in parents and mimeType contains 'image/' and trashed=false`);
+			const fields = encodeURIComponent("nextPageToken,files(id,name,createdTime)");
+			let pageToken = "";
+			const ids = [];
+			do {
+				const url =
+					`https://www.googleapis.com/drive/v3/files?q=${q}` +
+					`&fields=${fields}` +
+					`&orderBy=createdTime desc` +
+					(pageToken ? `&pageToken=${pageToken}` : ``) +
+					`&key=${apiKey}`;
+				const res = await fetch(url);
+				if (!res.ok) throw new Error(`Drive API error ${res.status}`);
+				const data = await res.json();
+				if (Array.isArray(data.files)) {
+					ids.push(...data.files.map(f => f.id));
+				}
+				pageToken = data.nextPageToken || "";
+			} while (pageToken);
+			return ids;
+		}
+
+		async function initCarousel() {
+			try {
+				let ids = DRIVE_PHOTO_IDS;
+				if (DRIVE_FOLDER_ID && GOOGLE_API_KEY && GOOGLE_API_KEY !== "YOUR_API_KEY_HERE") {
+					ids = await listDriveImagesFromFolder(DRIVE_FOLDER_ID, GOOGLE_API_KEY);
+				}
+				total = buildSlides(ids);
+				if (total > 1) setInterval(next, 5000);
+			} catch (err) {
+				console.error(err);
+				total = buildSlides(DRIVE_PHOTO_IDS);
+				if (total > 1) setInterval(next, 5000);
+			}
+		}
+
+		initCarousel();
+	</script>
+
+	<!-- 1) Load particles.js from CDN -->
+	<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+	<!-- 2) Initialize it for your #particles-js container -->
+	<script>
+		// Subtle white network on dark blue; interactive on hover/click
+		particlesJS('particles-js', {
+			"particles": {
+				"number": { "value": 120, "density": { "enable": true, "value_area": 900 } },
+				"color": { "value": "#ffffff" },
+				"shape": { "type": "circle" },
+				"opacity": { "value": 0.7, "random": false },
+				"size": { "value": 2.5, "random": true },
+				"line_linked": { "enable": true, "distance": 130, "color": "#ffffff", "opacity": 0.4, "width": 1 },
+				"move": { "enable": true, "speed": 1.2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+			},
+			"interactivity": {
+				"detect_on": "canvas",
+				"events": {
+					"onhover": { "enable": true, "mode": "grab" },
+					"onclick": { "enable": true, "mode": "push" },
+					"resize": true
+				},
+				"modes": {
+					"grab": { "distance": 140, "line_linked": { "opacity": 0.7 } },
+					"push": { "particles_nb": 3 }
+				}
+			},
+			"retina_detect": true
+		});
+	</script>
 </body>
-
-<script type="text/javascript" src="js/particles.js"></script>
-<script type="text/javascript" src="js/app.js"></script>
 
 </html>
